@@ -1,44 +1,49 @@
 # Shortly Website
 
-Made following a tutorial by Brad Traversy. Site deployed on Netlify: [Shortly Website](https://zesty-eclair-1f384e.netlify.app/ 'Click to visit site')
+Made following a tutorial by Brad Traversy. Site deployed on Netlify: [Bookmark Website](https://aesthetic-gingersnap-f17104.netlify.app/ 'Click to visit site')
 
 ## What things have I learned working on this project?
-+ How to create an animated hamburger menu.
-+ How to use JS and Regex to validate whether something is a url, e.g.
-```javascript
-function isValidURL(string) 
-        {
-            var res = 
-            string.match(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi);
-        return (res !== null);
-        };
-
-function formSubmit(e) {
-    e.preventDefault()
-    if(input.value === '') {
-        error.textContent = 'Please include a link'
-        input.classList.add('border-red')
-    } else if(!isValidURL(input.value)) {
-        error.textContent = 'Please enter a valid URL'
-        input.classList.add('border-red')
-    } else {
-        error.textContent = ''
-        input.classList.remove('border-red')
-    }
-}
++ How to create an animated hamburger menu and toggle it using the open class (also, how to make it into an overlay over the entire page - basically just using 'fixed' and 'inset-0').
++ How to create an accordion using only Tailwind classes and 0 JavaScript, e.g.
+```html
+<div class="transition duration-500 ease group-focus:-rotate-180 group-focus:text-red-500">
 ```
-+ How to stack elements on top of one another without using z-index.
-+ How to elegantly and with few lines of code display error messages under form inputs.
-+ Was given a reminder on how to toggle classes without using jQuery, e.g.
++ What 'tracking-wide' and 'tracking-widest' classes do.
++ A different approach to toggling tabs using JS, e.g.
 ```javascript
-function navToggle() {
-    btn.classList.toggle('open')
-    menu.classList.toggle('flex')
-    menu.classList.toggle('hidden')
-}
+const tabs = document.querySelectorAll('.tab')
+const panels = document.querySelectorAll('.panel')
+
+// Tabs menu event listener
+tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+        tabs.forEach(tab => {
+            tab.children[0].classList.remove('border-softRed', 'border-b-4', 'md:border-b-0')
+        })
+
+        panels.forEach(panel => {
+            panel.classList.add('hidden')
+        })
+
+        e.target.classList.add('border-softRed', 'border-b-4')
+        const classString = e.target.getAttribute('data-target')
+        document.getElementById('panels')
+            .getElementsByClassName(classString)[0]
+            .classList.remove('hidden')
+    })
+})
+```
++ How to combine custom classes with Tailwind directives, e.g.
+```css
+.bg-hero {
+        width: 2000px;
+        height: 300px;
+        left: 30%;
+        @apply absolute rounded-l-full top-52 bg-softBlue;
+    }
 ```
 
 ## How would I rate this project?
 | Satisfying | Edifying | Total Score |
 |------------|----------|-------------|
-| 2.5/5      | 4/5      | 3.5/5       |
+| 3/5        | 3.5/5      | 3.5/5       |
