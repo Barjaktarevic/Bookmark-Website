@@ -1,4 +1,4 @@
-# Shortly Website
+# Bookmark Website
 
 Made following a tutorial by Brad Traversy. Site deployed on Netlify: [Bookmark Website](https://aesthetic-gingersnap-f17104.netlify.app/ 'Click to visit site')
 
